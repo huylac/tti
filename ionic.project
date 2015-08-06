@@ -1,0 +1,12 @@
+{
+  "name": "tti",
+  "app_id": "3dc49b02",
+  "gulpStartupTasks": [
+    "sass",
+    "watch"
+  ],
+  "watchPatterns": [
+    "www/**/*",
+    "!www/lib/**/*"
+  ]
+}
