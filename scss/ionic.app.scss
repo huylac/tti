@@ -17,9 +17,31 @@ $dark:                            #444 !default;
 
 
 
+
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
+
+.header-avatar {
+  vertical-align: middle;
+  position: absolute;
+  left: $item-padding;
+  border-radius: $item-avatar-border-radius;
+  max-width: $item-avatar-width;
+  max-height: $item-avatar-height;
+  width: 100%;
+  height: 100%;
+}
+.header-avatar-content {
+  padding-left: $item-avatar-width + ($item-padding * 2);
+
+}
+.item-bottom-border {
+  border-width: 0px;
+  border-bottom-width: $item-border-width;
+  padding-left: 0px;
+}
+
 

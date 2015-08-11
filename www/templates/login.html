@@ -25,20 +25,22 @@
 </ion-modal-view>-->
 
 
-<ion-view title="Đăng nhập">
+<ion-view>
   <ion-content padding="true" class="has-header">
     <form ng-submit="doLogin()">
       <div class="row responsive-sm">
         <div class="col col-34 col-offset-33">
-          <button class="button button-block icon ion-social-facebook button-positive">&nbsp;&nbsp;Đăng nhập bằng facebook</button>
+          <button type="button" ng-click="doFbLogin()" class="button button-block icon ion-social-facebook button-positive">&nbsp;&nbsp;Đăng nhập bằng facebook</button>
           <div class="item item-borderless text-center">
             Hoặc tài khoản thetienich
           </div>
           <ion-list>
-            <label class="item item-input">
-              <input type="email" placeholder="Email" ng-required="true" ng-model="loginData.email">
+            <label class="item item-input item-floating-label item-bottom-border">
+              <span class="input-label">Địa chỉ email</span>
+              <input type="email" placeholder="Địa chỉ email" ng-required="true" ng-model="loginData.email">
             </label>
-            <label class="item item-input">
+            <label class="item item-input item-floating-label item-bottom-border">
+              <span class="input-label">Mật khẩu</span>
               <input type="password" placeholder="Mật khẩu" ng-required="true" ng-model="loginData.password">
             </label>
           </ion-list>
@@ -47,7 +49,6 @@
           <a href="#/registry" class="button button-positive button-clear button-block ">Chưa có tài khoản?</a>
         </div>
       </div>
-
     </form>
   </ion-content>
 </ion-view>

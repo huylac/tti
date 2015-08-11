@@ -1,6 +1,6 @@
-var controllers = angular.module('tti.controllers', [])
+angular.module('tti.controllers', [])
 
-controllers.controller('AppCtrl', ['$scope','$state','currentAuth','Auth', function($scope, $state, currentAuth, Auth) {
+.controller('AppCtrl', ['$scope','$state','currentAuth','Auth', 'CONST', function($scope, $state, currentAuth, Auth, CONST) {
 
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -13,27 +13,46 @@ controllers.controller('AppCtrl', ['$scope','$state','currentAuth','Auth', funct
 
     // any time auth status updates, add the user data to scope
     $scope.auth.$onAuth(function(authData) {
-        $scope.authData = authData;
+
+        if (authData) {
+            $scope.authData = authData;
+            var ref = new Firebase(CONST.DB_ROOT_REF);
+
+            var userInfo = {provider: authData.provider};
+
+            switch (authData.provider) {
+                case 'password':
+                    userInfo.name = authData.password.email.replace(/@.*/, '');
+                    userInfo.email = authData.password.email;
+                    userInfo.profileImg = authData.password.profileImageURL;
+                    break;
+                case 'facebook':
+                    userInfo.name = authData.facebook.displayName;
+                    userInfo.email = authData.facebook.email;
+                    userInfo.profileImg = authData.facebook.profileImageURL;
+                    break;
+            }
+
+            ref.child("users").child(authData.uid).once("value", function(snapShot) {
+                if (!snapShot.exists()) {
+                    console.log("check-----" + snapShot.ref());
+                    snapShot.ref().set(userInfo);
+                }
+            })
+            $scope.userInfo = userInfo;
+        }
+
     });
 
     $scope.logout = function() {
         $scope.auth.$unauth();
         $state.go('login');
     }
-  // Create the login modal that we will use later
- /* $ionicModal.fromTemplateUrl('templates/login.html', {
-    scope: $scope
-  }).then(function(modal) {
-    $scope.modal = modal;
-  });*/
 
 
+}])
 
-  // Perform the login action when the user submits the login form
-
-}]);
-
-controllers.controller('PlaylistsCtrl', ['$scope','currentAuth', function($scope, currentAuth) {
+.controller('PlaylistsCtrl', ['$scope','currentAuth', function($scope, currentAuth) {
 
   $scope.playlists = [
     { title: 'Reggae', id: 1 },
@@ -43,12 +62,12 @@ controllers.controller('PlaylistsCtrl', ['$scope','currentAuth', function($scope
     { title: 'Rap', id: 5 },
     { title: 'Cowbell', id: 6 }
   ];
-}]);
+}])
 
-controllers.controller('PlaylistCtrl', ['currentAuth', function($scope, $stateParams, currentAuth) {
-}]);
+.controller('PlaylistCtrl', ['currentAuth', function($scope, $stateParams, currentAuth) {
+}])
 
-controllers.controller('LoginCtrl', function($scope, Auth, $state) {
+.controller('LoginCtrl', function($scope, Auth, $state, $cordovaOauth) {
     $scope.loginData = {};
     $scope.doLogin = function() {
 
@@ -63,10 +82,25 @@ controllers.controller('LoginCtrl', function($scope, Auth, $state) {
         }).catch(function(error) {
             console.log(error);
         });
-    };
-});
 
-controllers.controller('RegistryCtrl', function($scope, Auth, $state) {
+
+    };
+    $scope.doFbLogin = function() {
+
+        $cordovaOauth.facebook("500433103451209", ["email"]).then(function(result) {
+            Auth.$authWithOAuthToken("facebook", result.access_token).then(function(authData) {
+                console.log(JSON.stringify(authData));
+                $state.go('app.playlists');
+            }, function(error) {
+                console.error("ERROR: " + error);
+            });
+        }, function(error) {
+            console.log("ERROR: " + error);
+        });
+    };
+})
+
+.controller('RegistryCtrl', function($scope, Auth, $state) {
     $scope.loginData = {};
     $scope.doRegistry = function() {
 
@@ -77,7 +111,15 @@ controllers.controller('RegistryCtrl', function($scope, Auth, $state) {
             password: $scope.loginData.password
         }).then(function(authData) {
             console.log("Authenticated successfully with payload:", authData);
-            $state.go('app.playlists');
+            Auth.$authWithPassword({
+                email: $scope.loginData.email,
+                password: $scope.loginData.password
+            }).then(function(authData) {
+                $state.go('app.playlists');
+
+            }).catch(function(error) {
+                console.log(error);
+            });
         }).catch(function(error) {
             console.log(error);
         });

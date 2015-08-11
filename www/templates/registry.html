@@ -1,13 +1,15 @@
-<ion-view title="Đăng kí">
+<ion-view>
     <ion-content padding="true" class="has-header">
         <form ng-submit="doRegistry()">
             <div class="row responsive-sm">
                 <div class="col col-34 col-offset-33">
                     <ion-list>
-                        <label class="item item-input">
-                            <input type="email" placeholder="Email" ng-required="true" ng-model="loginData.email">
+                        <label class="item item-input item-floating-label item-bottom-border">
+                            <span class="input-label">Địa chỉ email</span>
+                            <input type="email" placeholder="Địa chỉ email" ng-required="true" ng-model="loginData.email">
                         </label>
-                        <label class="item item-input">
+                        <label class="item item-input item-floating-label item-bottom-border">
+                            <span class="input-label">Mật khẩu</span>
                             <input type="password" placeholder="Mật khẩu" ng-required="true" ng-model="loginData.password">
                         </label>
                     </ion-list>
@@ -18,3 +20,4 @@
         </form>
     </ion-content>
 </ion-view>
+email

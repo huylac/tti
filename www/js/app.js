@@ -1,12 +1,10 @@
-// Ionic Starter App
+angular.module('tti', ['ionic', 'tti.controllers', 'firebase','ngCordovaOauth'])
 
-// angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
-// the 2nd parameter is an array of 'requires'
-// 'starter.controllers' is found in controllers.js
-var app = angular.module('tti', ['ionic', 'tti.controllers', 'firebase']);
+.constant('CONST', {
+      'DB_ROOT_REF': 'https://thetienich.firebaseio.com'
+    })
 
-app.run(['$ionicPlatform', '$rootScope', '$state', function($ionicPlatform, $rootScope, $state) {
+.run(['$ionicPlatform', '$rootScope', '$state', function($ionicPlatform, $rootScope, $state) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -28,23 +26,23 @@ app.run(['$ionicPlatform', '$rootScope', '$state', function($ionicPlatform, $roo
         $state.go('login');
     }
   });
-}]);
+}])
 
-app.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider) {
 
   $stateProvider.state('login', {
     url: '/login',
     templateUrl: 'templates/login.html',
     controller: 'LoginCtrl'
-  });
+  })
 
-  $stateProvider.state('registry', {
+  .state('registry', {
     url: '/registry',
     templateUrl: 'templates/registry.html',
     controller: 'RegistryCtrl'
-  });
+  })
 
-  $stateProvider.state('app', {
+  .state('app', {
     url: '/app',
     abstract: true,
     templateUrl: 'templates/menu.html',
@@ -57,26 +55,26 @@ app.config(function($stateProvider, $urlRouterProvider) {
         return Auth.$waitForAuth();
       }]
     }
-  });
+  })
 
-  $stateProvider.state('app.search', {
+  .state('app.search', {
     url: '/search',
     views: {
       'menuContent': {
         templateUrl: 'templates/search.html'
       }
     }
-  });
+  })
 
-  $stateProvider.state('app.browse', {
+  .state('app.browse', {
       url: '/browse',
       views: {
         'menuContent': {
           templateUrl: 'templates/browse.html'
         }
       }
-    });
-  $stateProvider.state('app.playlists', {
+    })
+  .state('app.playlists', {
       url: '/playlists',
       views: {
         'menuContent': {
@@ -93,9 +91,9 @@ app.config(function($stateProvider, $urlRouterProvider) {
           return Auth.$requireAuth();
         }]
       }
-    });
+    })
 
-  $stateProvider.state('app.single', {
+  .state('app.single', {
     url: '/playlists/:playlistId',
     views: {
       'menuContent': {
@@ -116,11 +114,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/login');
-});
+})
 
-app.factory("Auth", ["$firebaseAuth",
-  function($firebaseAuth) {
-    var ref = new Firebase("https://thetienich.firebaseio.com");
+.factory('Auth', ['$firebaseAuth', 'CONST',
+  function($firebaseAuth, CONST) {
+    var ref = new Firebase(CONST.DB_ROOT_REF);
     return $firebaseAuth(ref);
   }
 ]);
