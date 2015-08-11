@@ -1,12 +1,15 @@
 angular.module('tti.controllers', [])
 
-.controller('AppCtrl', ['$scope','$state','currentAuth','Auth', 'CONST', function($scope, $state, currentAuth, Auth, CONST) {
+.controller('AppCtrl', ['$scope','$state','$ionicTabsDelegate','currentAuth','Auth', 'CONST',
+        function($scope, $state, $ionicTabsDelegate, currentAuth, Auth, CONST) {
 
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
   // listen for the $ionicView.enter event:
   //$scope.$on('$ionicView.enter', function(e) {
+  //    $ionicTabsDelegate.selectedIndex(1);
+  //
   //});
 
     $scope.auth = Auth;
@@ -52,20 +55,25 @@ angular.module('tti.controllers', [])
 
 }])
 
-.controller('PlaylistsCtrl', ['$scope','currentAuth', function($scope, currentAuth) {
+.controller('FeedCtrl', ['$scope','currentAuth', function($scope, currentAuth) {
+    console.log("voooooooooo");
 
-  $scope.playlists = [
-    { title: 'Reggae', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 }
-  ];
+}])
+.controller('ExploreCtrl', ['$scope','currentAuth', function($scope, currentAuth) {
+
+
+}])
+.controller('NotificationCtrl', ['$scope','currentAuth', function($scope, currentAuth) {
+
+
+}])
+.controller('AccountCtrl', ['$scope','currentAuth', function($scope, currentAuth) {
+
+
 }])
 
-.controller('PlaylistCtrl', ['currentAuth', function($scope, $stateParams, currentAuth) {
-}])
+//.controller('PlaylistCtrl', ['currentAuth', function($scope, $stateParams, currentAuth) {
+//}])
 
 .controller('LoginCtrl', function($scope, Auth, $state, $cordovaOauth) {
     $scope.loginData = {};
@@ -78,7 +86,7 @@ angular.module('tti.controllers', [])
             password: $scope.loginData.password
         }).then(function(authData) {
             console.log("Authenticated successfully with payload:", authData);
-            $state.go('app.playlists');
+            $state.go('tab.feed');
         }).catch(function(error) {
             console.log(error);
         });
@@ -90,7 +98,7 @@ angular.module('tti.controllers', [])
         $cordovaOauth.facebook("500433103451209", ["email"]).then(function(result) {
             Auth.$authWithOAuthToken("facebook", result.access_token).then(function(authData) {
                 console.log(JSON.stringify(authData));
-                $state.go('app.playlists');
+                $state.go('tab.feed');
             }, function(error) {
                 console.error("ERROR: " + error);
             });
@@ -115,7 +123,7 @@ angular.module('tti.controllers', [])
                 email: $scope.loginData.email,
                 password: $scope.loginData.password
             }).then(function(authData) {
-                $state.go('app.playlists');
+                $state.go('tab.feed');
 
             }).catch(function(error) {
                 console.log(error);

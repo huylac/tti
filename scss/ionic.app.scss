@@ -15,7 +15,9 @@ $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
 
-
+$energized:                       #DD2C00 !default;
+$base-background-color:           #EEEEEE !default;
+$light:                           #EEEEEE !default;
 
 
 // The path for our ionicons font files, relative to the built CSS in www/css
@@ -24,6 +26,9 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 
+ion-content {
+  top: 0 !important;
+}
 .header-avatar {
   vertical-align: middle;
   position: absolute;
@@ -44,4 +49,6 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   padding-left: 0px;
 }
 
-
+.custom-icon-color i{
+  color : $energized;
+}

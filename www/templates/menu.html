@@ -1,6 +1,6 @@
 <ion-side-menus enable-menu-with-back-views="false">
   <ion-side-menu-content>
-    <ion-nav-bar class="bar-dark">
+    <ion-nav-bar class="bar-energized">
       <ion-nav-back-button>
       </ion-nav-back-button>
 
@@ -10,26 +10,39 @@
       </ion-nav-buttons>
     </ion-nav-bar>
     <ion-nav-view name="menuContent">
-      <div class="tabs tabs-icon-only tabs-dark tabs-color-light">
+      <ion-tabs class="tabs-icon-only tabs-dark tabs-color-light">
 
-          <a class="tab-item active" href="#">
-            <i class="icon ion-ios-home"></i>
-            Trang ch
-          </a>
-          <a class="tab-item" href="#">
-            <i class="icon ion-compass"></i>
-            Khám phá
-          </a>
-          <a class="tab-item" href="#">
-            <i class="icon ion-ios-world"></i>
-            Thông báo
-          </a>
-        <a class="tab-item" href="#">
-          <i class="icon ion-ios-person"></i>
-            Tài khoản
-        </a>
+          <ion-tab name="tab-feed" icon-on="ion-ios-list" icon-off="ion-ios-list-outline">
+            <ion-content header-shrink scroll-event-interval="5">
+                <div style="height: 50px;"></div>
 
-      </div>
+                <div class="list card" ng-repeat="n in [1,2,3,4]">
+                    <div class="item item-body">
+                        <p>
+                            Bacon ipsum dolor amet beef cow pork, picanha sirloin filet mignon alcatra bacon ham.
+                            Landjaeger fatback jowl short ribs shoulder sirloin tongue picanha.
+                            Boudin tail strip steak shankle, turkey capicola pancetta tongue pork chop drumstick meatloaf.
+                            Venison tongue fatback strip steak ribeye kevin, capicola bacon.
+                        </p>
+                    </div>
+                </div>
+                </div>
+            </ion-content>
+          </ion-tab>
+          <ion-tab name="tab-explore" icon-on="ion-android-compass" icon-off="ion-android-compass">
+
+          </ion-tab>
+          <ion-tab icon-on="ion-ios-plus" icon-off="ion-ios-plus-outline" class="custom-icon-color">
+
+          </ion-tab>
+          <ion-tab name="tab-notification" icon-on="ion-ios-bell" icon-off="ion-ios-bell-outline">
+
+          </ion-tab>
+          <ion-tab name="tab-account" icon-on="ion-ios-person" icon-off="ion-ios-person-outline">
+
+          </ion-tab>
+
+      </ion-tabs>
     </ion-nav-view>
   </ion-side-menu-content>
 
