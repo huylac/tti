@@ -24,10 +24,19 @@ $light:                           #EEEEEE !default;
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 // Include all of Ionic
-@import "www/lib/ionic/scss/ionic";
+@import "www/lib/ionic/scss/ionic","www/lib/ionic-scroll-sista/scss/ionic.scroll.sista.scss";
+
 
 ion-content {
   top: 0 !important;
+}
+.scroll-content{
+  top: 0 ;
+  bottom: 0;
+}
+.scroll-bar-indicator
+{
+  display: none;
 }
 .header-avatar {
   vertical-align: middle;

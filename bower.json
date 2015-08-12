@@ -8,6 +8,7 @@
     "firebase": "~2.2.9",
     "angularfire": "~1.1.2",
     "ng-cordova-oauth": "~0.1.4",
-    "ionic-ion-header-shrink": "*"
+    "ionic-ion-header-shrink": "*",
+    "ionic-scroll-sista": "~1.0.2"
   }
 }

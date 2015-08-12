@@ -7693,8 +7693,21 @@ a.button {
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
 
+.tabs-top .bar-subheader {
+  top: 93px; }
+
+.platform-ios.platform-cordova:not(.fullscreen) .tabs-top .bar-subheader {
+  top: 113px; }
+
 ion-content {
   top: 0 !important; }
+
+.scroll-content {
+  top: 0;
+  bottom: 0; }
+
+.scroll-bar-indicator {
+  display: none; }
 
 .header-avatar {
   vertical-align: middle;
