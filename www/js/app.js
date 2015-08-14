@@ -16,6 +16,7 @@ angular.module('tti', ['ionic', 'tti.controllers', 'firebase','ngCordovaOauth','
     if(window.StatusBar) {
       StatusBar.overlaysWebView(false);
       StatusBar.backgroundColorByHexString('#DD2C00');
+      StatusBar.styleBlackTranslucent();
     }
   });
 
@@ -29,7 +30,11 @@ angular.module('tti', ['ionic', 'tti.controllers', 'firebase','ngCordovaOauth','
   });
 }])
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+
+  $ionicConfigProvider.tabs.style("standard");
+  $ionicConfigProvider.tabs.position("bottom");
+  $ionicConfigProvider.navBar.alignTitle("center");
 
   $stateProvider.state('login', {
     url: '/login',
@@ -42,76 +47,6 @@ angular.module('tti', ['ionic', 'tti.controllers', 'firebase','ngCordovaOauth','
     templateUrl: 'templates/registry.html',
     controller: 'RegistryCtrl'
   })
-
-  //.state('app', {
-  //  url: '/app',
-  //  abstract: true,
-  //  templateUrl: 'templates/menu.html',
-  //  controller: 'AppCtrl',
-  //  resolve: {
-  //    // controller will not be loaded until $waitForAuth resolves
-  //    // Auth refers to our $firebaseAuth wrapper in the example above
-  //    'currentAuth': ['Auth', function(Auth) {
-  //      // $waitForAuth returns a promise so the resolve waits for it to complete
-  //      return Auth.$waitForAuth();
-  //    }]
-  //  }
-  //})
-  //
-  //.state('app.search', {
-  //  url: '/search',
-  //  views: {
-  //    'menuContent': {
-  //      templateUrl: 'templates/search.html'
-  //    }
-  //  }
-  //})
-  //
-  //.state('app.browse', {
-  //    url: '/browse',
-  //    views: {
-  //      'menuContent': {
-  //        templateUrl: 'templates/browse.html'
-  //      }
-  //    }
-  //  })
-  //.state('app.playlists', {
-  //    url: '/playlists',
-  //    views: {
-  //      'menuContent': {
-  //        templateUrl: 'templates/playlists.html',
-  //        controller: 'PlaylistsCtrl'
-  //      }
-  //    },
-  //    resolve: {
-  //      // controller will not be loaded until $requireAuth resolves
-  //      // Auth refers to our $firebaseAuth wrapper in the example above
-  //      'currentAuth': ['Auth', function(Auth) {
-  //        // $requireAuth returns a promise so the resolve waits for it to complete
-  //        // If the promise is rejected, it will throw a $stateChangeError (see above)
-  //        return Auth.$requireAuth();
-  //      }]
-  //    }
-  //  })
-  //
-  //.state('app.single', {
-  //  url: '/playlists/:playlistId',
-  //  views: {
-  //    'menuContent': {
-  //      templateUrl: 'templates/playlist.html',
-  //      controller: 'PlaylistCtrl'
-  //    }
-  //  },
-  //  resolve: {
-  //    // controller will not be loaded until $requireAuth resolves
-  //    // Auth refers to our $firebaseAuth wrapper in the example above
-  //    'currentAuth': ['Auth', function(Auth) {
-  //      // $requireAuth returns a promise so the resolve waits for it to complete
-  //      // If the promise is rejected, it will throw a $stateChangeError (see above)
-  //      return Auth.$requireAuth();
-  //    }]
-  //  }
-  //})
 
   .state('tab', {
       url: "/tab",

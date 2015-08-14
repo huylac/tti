@@ -1,16 +1,50 @@
-<ion-view view-title="Bảng tin" nav-bar-class="bar-energized">
-    <ion-content scroll-sista>
-        <div style="height: 64px;"></div>
+<ion-view view-title="Bảng tin" nav-bar-class="bar-dark">
+    <ion-nav-buttons side="secondary">
+        <button class="button button-icon icon ion-ios-bell button-outline">
+            <span class="badge badge-energized" style="position:absolute; top: -1px; left: 20px;">5</span>
+        </button>
+        <button class="button button-icon icon ion-ios-search-strong button-outline">
+        </button>
 
-        <div class="list card" ng-repeat="n in [1,2,3,4,5,6,7,8,9,10]">
-            <div class="item item-body">
-                <p>
-                    Bacon ipsum dolor amet beef cow pork, picanha sirloin filet mignon alcatra bacon ham.
-                    Landjaeger fatback jowl short ribs shoulder sirloin tongue picanha.
-                    Boudin tail strip steak shankle, turkey capicola pancetta tongue pork chop drumstick meatloaf.
-                    Venison tongue fatback strip steak ribeye kevin, capicola bacon.
-                </p>
+    </ion-nav-buttons>
+    <div class="bar bar-subheader bar-dark sub-header-border" style="opacity: 0.5;">
+        <div class="button-bar bar-dark">
+            <a class="button icon ion-ios-compose button-outline">Trạng thái</a>
+            <a class="button icon ion-ios-camera button-outline">Ảnh</a>
+            <a class="button icon ion-ios-location button-outline">Ghé thăm</a>
+        </div>
+    </div>
+    <ion-content scroll-sista="header-tabs" class="has-subheader">
+        <div style="height: 90px;"></div>
+
+        <!--<div class="list card" ng-repeat="n in [1,2,3,4,5,6,7,8,9,10]">-->
+            <!--<div class="item item-body">-->
+                <!--<p>-->
+                    <!--Bacon ipsum dolor amet beef cow pork, picanha sirloin filet mignon alcatra bacon ham.-->
+                    <!--Landjaeger fatback jowl short ribs shoulder sirloin tongue picanha.-->
+                    <!--Boudin tail strip steak shankle, turkey capicola pancetta tongue pork chop drumstick meatloaf.-->
+                    <!--Venison tongue fatback strip steak ribeye kevin, capicola bacon.-->
+                <!--</p>-->
+            <!--</div>-->
+        <!--</div>-->
+        <div class="row responsive-sm" ng-repeat="n in [1,2,3,4,5,6,7,8,9,10]" style="padding: 0px;">
+            <div class="col-80 col-offset-10">
+                <div class="list card">
+                    <div class="item item-image item-dark">
+                        <img src="http://news-djcity-com.djcityinc.netdna-cdn.com/wp-content/uploads/2014/08/ade2-600.jpg">
+                    </div>
+                    <div class="item item-text-wrap item-dark">
+                        <p>
+                            Bacon ipsum dolor amet beef cow pork, picanha sirloin filet mignon alcatra bacon ham.
+                            Landjaeger fatback jowl short ribs shoulder sirloin tongue picanha.
+                            Boudin tail strip steak shankle, turkey capicola pancetta tongue pork chop drumstick meatloaf.
+                            Venison tongue fatback strip steak ribeye kevin, capicola bacon.
+                        </p>
+                    </div>
+
+                </div>
             </div>
+
         </div>
 
     </ion-content>

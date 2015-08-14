@@ -15,16 +15,30 @@ $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
 
-$energized:                       #DD2C00 !default;
-$base-background-color:           #EEEEEE !default;
-$light:                           #EEEEEE !default;
+$energized:                       #FF3D00;
+$dark:                            #1F1C1C;
+$base-background-color:           #212121;
+$light:                           #EEEEEE;
+// Button bar
+$button-dark-active-border:       none;
 
+// Grids
+// -------------------------------
+$grid-padding-width:              0px;
+$content-padding:                 0px;
+$card-border-radius:              0px;
+$card-header-bg:                  #212121;
+$card-body-bg:                    #fff;
+$card-footer-bg:                  #212121;
 
+@media (min-width: 567px) {
+  $font-size-base:                16px;
+}
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 // Include all of Ionic
-@import "www/lib/ionic/scss/ionic","www/lib/ionic-scroll-sista/scss/ionic.scroll.sista.scss";
+@import "www/lib/ionic/scss/ionic.scss","www/lib/ionic-scroll-sista/scss/ionic.scroll.sista.scss";
 
 
 ion-content {
@@ -37,6 +51,36 @@ ion-content {
 .scroll-bar-indicator
 {
   display: none;
+}
+.center{
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 .header-avatar {
   vertical-align: middle;
@@ -60,4 +104,38 @@ ion-content {
 
 .custom-icon-color i{
   color : $energized;
+}
+
+.button-bar > .button {
+  border-color: #616161;
+  border-width: 0px;
+  &:first-child {
+    border-right-width: 1px;
+  }
+  &:last-child {
+    border-right-width: 0px;
+    border-left-width: 1px;
+  }
+}
+.button-outline {
+  background: none !important;
+  box-shadow: none !important;
+}
+
+
+.sub-header-border {
+  border-top-width: 0px;
+  border-bottom-width: 0px;
+}
+.tabs {
+  border-top-width: 0px !important;
+}
+
+
+
+.list:last-child {
+  margin-bottom: 0px;
+  &.card{
+    margin-bottom:10px;
+  }
 }
