@@ -16,7 +16,7 @@ $dark:                            #444 !default;
 */
 
 $energized:                       #FF3D00;
-$dark:                            #1F1C1C;
+$dark:                            #0A0A0A;
 $base-background-color:           #212121;
 $light:                           #EEEEEE;
 // Button bar
@@ -107,7 +107,7 @@ ion-content {
 }
 
 .button-bar > .button {
-  border-color: #616161;
+  border-color: #0A0A0A;
   border-width: 0px;
   &:first-child {
     border-right-width: 1px;
@@ -131,7 +131,14 @@ ion-content {
   border-top-width: 0px !important;
 }
 
+.item h2, h3, h4 {
+  color: #BABABA;
+}
 
+
+.tabs-icon-left.tabs .tab-item {
+  font-size: 12px;
+}
 
 .list:last-child {
   margin-bottom: 0px;

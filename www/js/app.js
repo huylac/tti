@@ -15,7 +15,7 @@ angular.module('tti', ['ionic', 'tti.controllers', 'firebase','ngCordovaOauth','
     }
     if(window.StatusBar) {
       StatusBar.overlaysWebView(false);
-      StatusBar.backgroundColorByHexString('#DD2C00');
+      //StatusBar.backgroundColorByHexString('#DD2C00');
       StatusBar.styleBlackTranslucent();
     }
   });
